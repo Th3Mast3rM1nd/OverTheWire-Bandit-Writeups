@@ -189,9 +189,26 @@ A daemon is listening on port 30002 and will give you the password for bandit25 
   <summary> <b>View Solution </b></summary>
   
 ```
- 
-
+for i in {1000..10000}; do echo "UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ ${i}"  ; done | nc 127.0.0.1 30002
   ```
+
+</details>
+
+***level 26***
+
+Logging in to bandit26 from bandit25 should be fairly easy… The shell for user bandit26 is not /bin/bash, but something else. Find out what it is, how it works and how to break out of it.
+
+<details>
+  <summary> <b>View Solution </b></summary>
+  
+```
+we can use more to get the flag by making the terminal size smaller and typeing v to enter command and we can use then :e file.txt to read any file on the system 
+  ```
+
+<img width="670" alt="Screen Shot 2021-11-01 at 19 05 42" src="https://user-images.githubusercontent.com/92652606/139719154-2af697d7-5f7d-44de-bf27-654b2eb589d0.png">
+   
+
+<img width="670" alt="Screen Shot 2021-11-01 at 19 06 38" src="https://user-images.githubusercontent.com/92652606/139719452-35fbd4df-d0cb-400d-af5d-f014feb1daaa.png">
 
 
 </details>
