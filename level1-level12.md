@@ -187,13 +187,3 @@ cat data.txt | tr a-zA-Z n-za-mN-ZA-M
 
 <img width="480" alt="Screen Shot 2021-11-01 at 16 38 28" src="https://user-images.githubusercontent.com/92652606/139698593-71bd2951-2e48-4467-b55f-84ce01636deb.png">
 
-</details>
-
-  
-```
- 
-
-  ```
-
-
-</details>
