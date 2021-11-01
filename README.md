@@ -67,16 +67,151 @@ The password for the next level is stored in the only human-readable file in the
   <summary> <b>View Solution </b></summary>
   
 ```
-
+find . -type f -exec file "{}" ";"
+  cat ./-file07
   ```
+<img width="527" alt="Screen Shot 2021-11-01 at 16 12 31" src="https://user-images.githubusercontent.com/92652606/139694648-c53add4b-ab7f-4cfd-a724-c7d24fc60c3e.png">
 
 
 </details>
 
 
-***level 3***
+***level 6***
 
-The password for the next level is stored in a file called spaces in this filename located in the home directory
+The password for the next level is stored in a file somewhere under the inhere directory and has all of the following properties:
+
+    human-readable
+    1033 bytes in size
+    not executable
+<details>
+  <summary> <b>View Solution </b></summary>
+  
+```
+find ./inhere/ -type f -size 1033c -exec cat "{}" ";"
+  ```
+<img width="641" alt="Screen Shot 2021-11-01 at 16 17 08" src="https://user-images.githubusercontent.com/92652606/139695369-4319180f-1293-46f2-a337-6b5fdf6fd491.png">
+</details>
+
+
+***level 7***
+
+The password for the next level is stored somewhere on the server and has all of the following properties:
+
+    owned by user bandit7
+    owned by group bandit6
+    33 bytes in size
+
+<details>
+  <summary> <b>View Solution </b></summary>
+  
+```
+find / -type f -user bandit7 -a -group bandit6 -size 33c -exec cat "{}" ";" 2> /dev/null
+  ```
+<img width="882" alt="Screen Shot 2021-11-01 at 16 19 37" src="https://user-images.githubusercontent.com/92652606/139695720-8f463b73-c188-4811-bd7d-485800f9bb14.png">
+  
+</details>
+
+
+***level 8***
+
+The password for the next level is stored in the file data.txt next to the word millionth
+<details>
+  <summary> <b>View Solution </b></summary>
+  
+```
+cat data.txt | egrep -i "millionth" | awk '{print $NF}'
+  ```
+<img width="655" alt="Screen Shot 2021-11-01 at 16 23 50" src="https://user-images.githubusercontent.com/92652606/139696404-7eabf2ef-9a76-4c74-844a-20f63bdc4ca6.png">
+
+
+</details>
+
+
+***level 9***
+
+The password for the next level is stored in the file data.txt and is the only line of text that occurs only once
+
+<details>
+  <summary> <b>View Solution </b></summary>
+  
+```
+cat data.txt |  sort | uniq -u
+  ```
+<img width="443" alt="Screen Shot 2021-11-01 at 16 29 32" src="https://user-images.githubusercontent.com/92652606/139697312-a9a079ef-905f-481f-8492-239e3d1d642a.png">
+
+
+</details>
+
+
+***level 10***
+
+The password for the next level is stored in the file data.txt in one of the few human-readable strings, preceded by several ‘=’ characters.
+
+<details>
+  <summary> <b>View Solution </b></summary>
+  
+```
+strings  data.txt | egrep -ai "==+"
+  ```
+
+<img width="480" alt="Screen Shot 2021-11-01 at 16 34 30" src="https://user-images.githubusercontent.com/92652606/139698015-ab1d2146-9c55-4835-9590-b886dbb31bcc.png">
+
+</details>
+
+
+***level 11***
+
+The password for the next level is stored in the file data.txt, which contains base64 encoded data 
+
+<details>
+  <summary> <b>View Solution </b></summary>
+  
+```
+cat data.txt | base64 -d
+  ```
+<img width="593" alt="Screen Shot 2021-11-01 at 16 35 57" src="https://user-images.githubusercontent.com/92652606/139698241-ce222826-f9be-4867-8830-ddf3ddab3ef3.png">
+
+
+</details>
+
+
+***level 12***
+
+The password for the next level is stored in the file data.txt, where all lowercase (a-z) and uppercase (A-Z) letters have been rotated by 13 positions
+
+<details>
+  <summary> <b>View Solution </b></summary>
+  
+```
+cat data.txt | tr a-zA-Z n-za-mN-ZA-M
+  ```
+
+<img width="480" alt="Screen Shot 2021-11-01 at 16 38 28" src="https://user-images.githubusercontent.com/92652606/139698593-71bd2951-2e48-4467-b55f-84ce01636deb.png">
+
+</details>
+
+***level 13***
+
+The password for the next level is stored in the file data.txt, which is a hexdump of a file that has been repeatedly compressed. For this level it may be useful to create a directory under /tmp in which you can work using mkdir. For example: mkdir /tmp/myname123. Then copy the datafile using cp, and rename it using mv (read the manpages!)
+
+<details>
+  <summary> <b>View Solution </b></summary>
+  
+```
+i used first xxd -r to revert the file data.txt to the original format .
+and after that i start using file command line to check which file type is the file .
+and decompressing the file depending on the 
+type most time i had to use mv to change the file name like data to data.gz ( commands i used are tar xf , gunzip , bunzip und xxd ) 
+  ```
+
+<img width="1419" alt="Screen Shot 2021-11-01 at 16 48 17" src="https://user-images.githubusercontent.com/92652606/139700115-f217c749-2138-46ba-a8dd-21a01110c8bb.png">
+  
+<img width="400" alt="Screen Shot 2021-11-01 at 16 49 00" src="https://user-images.githubusercontent.com/92652606/139700261-d5a905e4-a916-4b87-98cf-5110f7902e0e.png">
+
+</details>
+
+***level 14***
+
 
 <details>
   <summary> <b>View Solution </b></summary>
@@ -87,10 +222,8 @@ The password for the next level is stored in a file called spaces in this filena
 
 </details>
 
+***level 14***
 
-***level 3***
-
-The password for the next level is stored in a file called spaces in this filename located in the home directory
 
 <details>
   <summary> <b>View Solution </b></summary>
@@ -99,6 +232,76 @@ The password for the next level is stored in a file called spaces in this filena
 
   ```
 
+</details>
+
+***level 14***
+
+
+<details>
+  <summary> <b>View Solution </b></summary>
+  
+```
+
+  ```
 
 </details>
 
+***level 14***
+
+
+<details>
+  <summary> <b>View Solution </b></summary>
+  
+```
+
+  ```
+
+</details>
+
+***level 14***
+
+
+<details>
+  <summary> <b>View Solution </b></summary>
+  
+```
+
+  ```
+
+</details>
+
+***level 14***
+
+
+<details>
+  <summary> <b>View Solution </b></summary>
+  
+```
+
+  ```
+
+</details>
+
+***level 14***
+
+
+<details>
+  <summary> <b>View Solution </b></summary>
+  
+```
+
+  ```
+
+</details>
+
+***level 14***
+
+
+<details>
+  <summary> <b>View Solution </b></summary>
+  
+```
+
+  ```
+
+</details>
