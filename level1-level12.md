@@ -1,4 +1,4 @@
-# Bandir Level1 - Level12 
+# Bandit Level1 - Level12 
 
 ***Level 1*** :
 
